@@ -15,7 +15,7 @@ const Header = () => {
                     <Nav className="ms-auto">
                         <Form className="">
                             <FormControl
-                            type="search"
+                            type="Search your Destination.."
                             placeholder="Search"
                             aria-label="Search"
                             />

@@ -29,7 +29,7 @@ const Home = () => {
                                     
                                     />
                                      <Card.ImgOverlay style={{ top:'unset' }}>
-                                        <Card.Title>Card title</Card.Title>
+                                        <Card.Title className='text-uppercase'>Cox's Bazar</Card.Title>
                                     </Card.ImgOverlay>
                                 </Card>
                             </Col>
@@ -37,7 +37,7 @@ const Home = () => {
                                 <Card role={'button'} className="bg-dark text-white mt-5">
                                     <Card.Img src={item2} alt="Card image" />
                                     <Card.ImgOverlay style={{ top:'unset' }} >
-                                        <Card.Title >Card title</Card.Title>
+                                        <Card.Title className='text-uppercase'>Sreemangal</Card.Title>
                                     </Card.ImgOverlay>
                                 </Card>
                             </Col>
@@ -45,7 +45,7 @@ const Home = () => {
                                 <Card role={'button'} className="bg-dark text-white mt-5">
                                     <Card.Img src={item3} alt="Card image" />
                                     <Card.ImgOverlay style={{ top:'unset' }} >
-                                        <Card.Title >Card title</Card.Title>
+                                        <Card.Title className='text-uppercase'>Sundarbans</Card.Title>
                                     </Card.ImgOverlay>
                                 </Card>
                             </Col>
