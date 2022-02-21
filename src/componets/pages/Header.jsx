@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import logo from  '../../images/logo.png';
 const Header = () => {
     return (
         <>
-            <Navbar className='text-white' expand="lg">
+            <Navbar className='text-white bg-dark opacity-75' expand="lg">
                 <Container>
                     <Navbar.Brand href="/" style={{ width:'170px' }}>
                         <img className='w-100' src={logo} alt="" />
@@ -19,12 +20,14 @@ const Header = () => {
                             placeholder="Search"
                             aria-label="Search"
                             />
+                            
                         </Form>
                         <Nav.Link className='text-white ms-4' href="/news">News</Nav.Link>
                         <Nav.Link className='text-white ms-4' href="/destination">Destination</Nav.Link>
                         <Nav.Link className='text-white ms-4' href="/blog">Blog</Nav.Link>
                         <Nav.Link className='text-white ms-4 me-4' href="/contact">Contact</Nav.Link>
                         <Button variant='warning' className='px-4 fw-bold'>Login</Button>
+                       <Link to="/links"></Link>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>

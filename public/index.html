@@ -26,6 +26,9 @@
     -->
     <title>React App</title>
     <style>
+      .active{
+        border-color: orange!important;
+      }
       .home-bg{
         background-repeat: no-repeat;
         background-size:cover;
@@ -33,6 +36,12 @@
         height: 100vh;
          background-blend-mode:darken;
       }
+      .place-card{
+          flex-direction: row!important;
+        }
+        .place-card img{
+          width: 200px;
+        }
       @media(max-width:668px){
         .home-bg{
           height: auto;
@@ -40,6 +49,12 @@
         }
         .navbar-collapse{
           padding-top: 35px;
+        }
+        .place-card{
+          flex-direction: column!important;
+        }
+        .place-card img{
+          width: 100%;
         }
       }
     </style>
