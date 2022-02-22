@@ -23,8 +23,11 @@ const BookingForm = ({ setBoking, data, setDestination }) => {
     const formSubmit = (e) => {
         e.preventDefault();
         navigate(`booking/${data.name}`);
+        localStorage.removeItem('arianame');
+        localStorage.setItem('arianame', JSON.stringify(data.name));
+
+
         // console.log(details);
-        return <StayPlace data={details}/>;
     }
     return (
         <Card className='p-3'>

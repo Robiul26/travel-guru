@@ -5,7 +5,8 @@ import { Aria } from '../../Data';
 import Header from './Header';
 
 const StayPlace = () => {
-
+    const areaname = localStorage.getItem('arianame');    
+    const getName = JSON.parse(areaname);
     const name = useParams();
     const getAria = Aria.filter(data => data.name === name.name);
 
@@ -13,6 +14,7 @@ const StayPlace = () => {
         <>
             <Header/>
             <Container className='py-5'>
+               { getName !== null ?
                 <Row>
                     <Col md={7}>
                         <Card.Title className=' text-uppercase'>{getAria[0].name}</Card.Title>
@@ -39,6 +41,9 @@ const StayPlace = () => {
                         <iframe src={getAria[0].map} width="100%" height="450" style={{ border: 0 }} loading="lazy"></iframe>
                     </Col>
                 </Row>
+                :
+                <h2 className='text-danger text-center p-5'>You have not choice any destination for booking. Please Booking !</h2>    
+            }
             </Container>
         </>
     );
