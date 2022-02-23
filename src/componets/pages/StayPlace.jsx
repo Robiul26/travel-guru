@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Aria } from '../../Data';
 import Header from './Header';
 
@@ -42,7 +42,9 @@ const StayPlace = () => {
                     </Col>
                 </Row>
                 :
-                <h2 className='text-danger text-center p-5'>You have not choice any destination for booking. Please Booking !</h2>    
+                <h2 className='text-danger text-center page-link py-5 rounded-3'>You haven't choice any destination for booking. Please Booking   
+                <Link to='/'> here</Link>
+                </h2>    
             }
             </Container>
         </>

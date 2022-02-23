@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import StayPlace from './StayPlace';
 
 const BookingForm = ({ setBoking, data, setDestination }) => {
     const navigate = useNavigate();
@@ -22,7 +21,7 @@ const BookingForm = ({ setBoking, data, setDestination }) => {
     }
     const formSubmit = (e) => {
         e.preventDefault();
-        navigate(`booking/${data.name}`);
+        navigate(`destination/${data.name}`);
         localStorage.removeItem('arianame');
         localStorage.setItem('arianame', JSON.stringify(data.name));
 
@@ -52,13 +51,13 @@ const BookingForm = ({ setBoking, data, setDestination }) => {
                     <Col md={6}>
                         <Form.Group className="mb-3" controlId="from">
                             <Form.Label>From</Form.Label>
-                            <Form.Control type="date" onChange={handlerChange} name="from" placeholder="from" />
+                            <Form.Control type="date" onChange={handlerChange} name="from" placeholder="from" required />
                         </Form.Group>
                     </Col>
                     <Col md={6}>
                         <Form.Group className="mb-3" controlId="to">
                             <Form.Label>To</Form.Label>
-                            <Form.Control type="date" onChange={handlerChange} name="to" placeholder="to" />
+                            <Form.Control type="date" onChange={handlerChange} name="to" placeholder="to" required />
                         </Form.Group>
                     </Col>
                 </Row>
