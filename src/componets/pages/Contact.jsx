@@ -10,7 +10,7 @@ const Contact = () => {
             <Container>
                 <h2 className='text-warning text-center page-link py-5 mt-5 rounded-3'>
                     You can... 📧  
-                    <Link as={Link} to="#" onClick={() => window.location = 'mailto:robiulrobi26@gmail.com'}>Send email</Link>
+                    <Link className='btn btn-outline-success ms-5' as={Link} to="#" onClick={() => window.location = 'mailto:robiulrobi26@gmail.com'}>Send email</Link>
                 </h2>
             </Container>
         </>
