@@ -30,6 +30,7 @@ const Register = () => {
         googleLogin()
             .then(res => {
                 handleResponse(res, true);
+                localStorage.setItem('user', JSON.stringify(res));
             });
     }
 
@@ -38,6 +39,7 @@ const Register = () => {
         facebookLogin()
             .then(res => {
                 handleResponse(res, true);
+                localStorage.setItem('user', JSON.stringify(res));
             });
     }
 
@@ -45,9 +47,10 @@ const Register = () => {
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLogedInUser(res); //user data save in UserContex()
-        localStorage.setItem('user', JSON.stringify(res)); //user data save in localstorage
+      //  localStorage.setItem('user', JSON.stringify(res)); //user data save in localstorage
         if (redirect) {
-            navigate(from, { replace: true });
+            // navigate(from, { replace: true });
+            navigate('/login');
         }
     }
 

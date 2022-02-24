@@ -63,7 +63,8 @@ const Login = () => {
         e.preventDefault();
         signInWithEmaiAndPassword(user.email, user.password)
             .then(res => {
-                handleResponse(res, true);
+                handleResponse(res, true); 
+                localStorage.setItem('user', JSON.stringify(res));
                 console.log(res);
             })
     }
