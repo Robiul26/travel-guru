@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import googleImg from '../../../images/google.png';
 import fbImg from '../../../images/fbpng.png';
 import Header from '../Header';
-import { facebookLogin, googleLogin } from './LoginManger';
+import { createUserWithPassword, facebookLogin, googleLogin } from './LoginManger';
 import { UserContext } from '../../../App';
 
 const Register = () => {
@@ -15,6 +15,8 @@ const Register = () => {
 
     const [user, setUser] = useState({
         isSignedIn: false,
+        first_name: '',
+        last_name: '',
         name: '',
         email: '',
         password: '',
@@ -49,6 +51,28 @@ const Register = () => {
         }
     }
 
+
+    // Function for Email with SignIn
+    const handleChange = (e) => {
+        const newUserInfo = { ...user };
+        newUserInfo[e.target.name] = e.target.value;
+        setUser(newUserInfo);
+        // console.log(user);
+    }
+
+     // RegisterForm submit for Register
+    const submitForm = (e) => {
+        e.preventDefault();
+        createUserWithPassword(user.first_name, user.email, user.password)
+            .then(res => {
+                handleResponse(res, true);
+                console.log(res);
+            })
+
+      
+    }
+
+
     return (
         <>
             <Header />
@@ -59,28 +83,28 @@ const Register = () => {
                         <Card>
                             <Card.Body>
                                 <Card.Title className='fw-bold pb-3'>Register</Card.Title>
-                                <Form>
+                                <Form onSubmit={submitForm}>
                                     <Form.Group className="mb-3" controlId="firstName">
                                         {/* <Form.Label>First name</Form.Label> */}
-                                        <Form.Control type="text" placeholder="Enter First name" />
+                                        <Form.Control name="first_name" onChange={handleChange} type="text" placeholder="Enter First name" />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="lastName">
                                         {/* <Form.Label>Last name</Form.Label> */}
-                                        <Form.Control type="text" placeholder="Enter Last name" />
+                                        <Form.Control name="last_name" onChange={handleChange} type="text" placeholder="Enter Last name" />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         {/* <Form.Label>Username of Email</Form.Label> */}
-                                        <Form.Control type="email" placeholder="Enter email" />
+                                        <Form.Control name="email" onChange={handleChange} type="email" placeholder="Enter email" />
 
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="Password">
                                         {/* <Form.Label>Password</Form.Label> */}
-                                        <Form.Control type="password" placeholder="Password" />
+                                        <Form.Control name="password" onChange={handleChange} type="password" placeholder="Password" />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="ConfirmPassword">
                                         {/* <Form.Label>Confirm Password</Form.Label> */}
-                                        <Form.Control type="password" placeholder="Password" />
+                                        <Form.Control name="c_password" onChange={handleChange} type="password" placeholder="Password" />
                                     </Form.Group>
                                     <Button variant="warning" className='w-100 fw-bold' type="submit">
                                         Create an account

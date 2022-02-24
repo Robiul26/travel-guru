@@ -39,7 +39,7 @@ const Header = () => {
                             <Nav.Link className='text-white ms-4 me-4' href="/contact">Contact</Nav.Link>
 
                             {getStorUser &&
-                                <Navbar.Brand className='text-light'> {getStorUser.name} <img className='rounded-pill' style={{ width: '40px', height: '40px' }} src={getStorUser.photo} alt={getStorUser.name} /></Navbar.Brand>
+                                <Navbar.Brand className='text-light'> {getStorUser.name} <img className='rounded-pill' style={{ width: '40px', height: '40px' }} src={getStorUser.photo} alt='' /></Navbar.Brand>
                             }
 
                             {

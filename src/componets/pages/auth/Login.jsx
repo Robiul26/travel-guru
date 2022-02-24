@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import googleImg from '../../../images/google.png';
 import fbImg from '../../../images/fbpng.png';
 import Header from '../Header';
-import { facebookLogin, googleLogin } from './LoginManger';
+import { facebookLogin, googleLogin, signInWithEmaiAndPassword } from './LoginManger';
 import { UserContext } from '../../../App';
 
 const Login = () => {
@@ -34,9 +34,9 @@ const Login = () => {
     // Function for Sign in with Facebook
     const loginWithFacebook = () => {
         facebookLogin()
-        .then(res => {
-            handleResponse(res, true);
-        });
+            .then(res => {
+                handleResponse(res, true);
+            });
     }
 
     // Global function for response
@@ -48,7 +48,26 @@ const Login = () => {
             navigate(from, { replace: true });
         }
     }
-    
+
+
+    // Function for Email with SignIn
+    const handleChange = (e) => {
+        const newUserInfo = { ...user };
+        newUserInfo[e.target.name] = e.target.value;
+        setUser(newUserInfo);
+        // console.log(user);
+    }
+
+    // LoginForm submit for Login
+    const submitForm = (e) => {
+        e.preventDefault();
+        signInWithEmaiAndPassword(user.email, user.password)
+            .then(res => {
+                handleResponse(res, true);
+                console.log(res);
+            })
+    }
+
     return (
         <>
             <Header />
@@ -59,16 +78,16 @@ const Login = () => {
                         <Card>
                             <Card.Body>
                                 <Card.Title className='fw-bold pb-3'>Login</Card.Title>
-                                <Form>
+                                <Form onSubmit={submitForm}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         {/* <Form.Label>Email address</Form.Label> */}
-                                        <Form.Control type="email" placeholder="Enter email" />
+                                        <Form.Control onChange={handleChange} name='email' type="email" placeholder="Enter email" />
 
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="formBasicPassword">
                                         {/* <Form.Label>Password</Form.Label> */}
-                                        <Form.Control type="password" placeholder="Password" />
+                                        <Form.Control onChange={handleChange} name='password' type="password" placeholder="Password" />
                                     </Form.Group>
                                     <Row>
                                         <Col md>
