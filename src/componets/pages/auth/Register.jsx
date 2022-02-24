@@ -47,7 +47,7 @@ const Register = () => {
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLogedInUser(res); //user data save in UserContex()
-      //  localStorage.setItem('user', JSON.stringify(res)); //user data save in localstorage
+        //  localStorage.setItem('user', JSON.stringify(res)); //user data save in localstorage
         if (redirect) {
             // navigate(from, { replace: true });
             navigate('/login');
@@ -63,16 +63,20 @@ const Register = () => {
         // console.log(user);
     }
 
-     // RegisterForm submit for Register
+    // RegisterForm submit for Register
     const submitForm = (e) => {
         e.preventDefault();
-        createUserWithPassword(user.first_name, user.email, user.password)
-            .then(res => {
-                handleResponse(res, true);
-                console.log(res);
-            })
 
-      
+        if (user.email) {
+            createUserWithPassword(user.first_name, user.email, user.password)
+                .then(res => {
+                    handleResponse(res, true);
+                    console.log(res);
+                })
+        }else{
+            alert('Not register');
+        }
+
     }
 
 
@@ -89,7 +93,7 @@ const Register = () => {
                                 <Form onSubmit={submitForm}>
                                     <Form.Group className="mb-3" controlId="firstName">
                                         {/* <Form.Label>First name</Form.Label> */}
-                                        <Form.Control name="first_name" onChange={handleChange} type="text" placeholder="Enter First name" />
+                                        <Form.Control name="first_name" onChange={handleChange} type="text" placeholder="Enter First name" required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="lastName">
                                         {/* <Form.Label>Last name</Form.Label> */}
@@ -97,17 +101,17 @@ const Register = () => {
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         {/* <Form.Label>Username of Email</Form.Label> */}
-                                        <Form.Control name="email" onChange={handleChange} type="email" placeholder="Enter email" />
+                                        <Form.Control name="email" onChange={handleChange} type="email" placeholder="Enter email" required/>
 
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="Password">
                                         {/* <Form.Label>Password</Form.Label> */}
-                                        <Form.Control name="password" onChange={handleChange} type="password" placeholder="Password" />
+                                        <Form.Control name="password" onChange={handleChange} type="password" placeholder="Password" required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="ConfirmPassword">
                                         {/* <Form.Label>Confirm Password</Form.Label> */}
-                                        <Form.Control name="c_password" onChange={handleChange} type="password" placeholder="Password" />
+                                        <Form.Control name="c_password" onChange={handleChange} type="password" placeholder="Password" required />
                                     </Form.Group>
                                     <Button variant="warning" className='w-100 fw-bold' type="submit">
                                         Create an account

@@ -61,12 +61,22 @@ const Login = () => {
     // LoginForm submit for Login
     const submitForm = (e) => {
         e.preventDefault();
-        signInWithEmaiAndPassword(user.email, user.password)
-            .then(res => {
-                handleResponse(res, true); 
-                localStorage.setItem('user', JSON.stringify(res));
-                console.log(res);
-            })
+       
+
+        if (user.email && user.password) {
+            signInWithEmaiAndPassword(user.email, user.password)
+                .then(res => {
+                   if(res.success){
+                    handleResponse(res, true);
+                    localStorage.setItem('user', JSON.stringify(res));
+                   }else{
+                       alert(`${res.error} \nPlease insert valid email and password.`);
+                   }
+                    console.log(res);
+                })
+        }else{
+            alert('not login')
+        }
     }
 
     return (
@@ -82,13 +92,13 @@ const Login = () => {
                                 <Form onSubmit={submitForm}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         {/* <Form.Label>Email address</Form.Label> */}
-                                        <Form.Control onChange={handleChange} name='email' type="email" placeholder="Enter email" />
+                                        <Form.Control onChange={handleChange} name='email' type="email" placeholder="Enter email" required />
 
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="formBasicPassword">
                                         {/* <Form.Label>Password</Form.Label> */}
-                                        <Form.Control onChange={handleChange} name='password' type="password" placeholder="Password" />
+                                        <Form.Control onChange={handleChange} name='password' type="password" placeholder="Password" required/>
                                     </Form.Group>
                                     <Row>
                                         <Col md>
