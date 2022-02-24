@@ -33,7 +33,6 @@ const Header = () => {
                                 />
 
                             </Form>
-                            <Nav.Link className='text-white ms-4' href="/news">News</Nav.Link>
                             <Nav.Link className='text-white ms-4' href={`/destination/${getName}`}>Destination</Nav.Link>
                             <Nav.Link className='text-white ms-4' href="/blog">Blog</Nav.Link>
                             <Nav.Link className='text-white ms-4 me-4' href="/contact">Contact</Nav.Link>

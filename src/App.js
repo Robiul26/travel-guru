@@ -6,6 +6,8 @@ import Register from "./componets/pages/auth/Register";
 import StayPlace from "./componets/pages/StayPlace";
 import PrivateRoute from "./componets/pages/auth/PrivateRoute";
 import { createContext, useState } from "react";
+import Blog from "./componets/pages/Blog";
+import Contact from "./componets/pages/Contact";
 export const UserContext = createContext();
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
             
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register />}/>
+            <Route path="/blog" element={<Blog />}/>
+            <Route path="/contact" element={<Contact />}/>
           </Routes>
       </BrowserRouter>
     </UserContext.Provider>

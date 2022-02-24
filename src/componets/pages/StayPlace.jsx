@@ -42,7 +42,7 @@ const StayPlace = () => {
                     </Col>
                 </Row>
                 :
-                <h2 className='text-danger text-center page-link py-5 rounded-3'>You haven't choice any destination for booking. Please Booking   
+                <h2 className='text-danger text-center page-link py-5 rounded-3'>You haven't choice any destination 😔 please Booking   
                 <Link to='/'> here</Link>
                 </h2>    
             }
